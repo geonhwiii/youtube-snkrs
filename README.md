@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Snkrs
 
-## Getting Started
+## Snkrs Clone Project
 
-First, run the development server:
+## 🐈 Yarn berry
 
-```bash
-npm run dev
-# or
-yarn dev
+1. yarn berry 프로젝트가 아니라면
+
+```shell
+# Set yarn berry
+$ yarn set version berry
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. `node_modules` 폴더 삭제
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+3. `.yarnrc.yml` 수정
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```yml
+# nodeLinker: node-modules 제거
+yarnPath: .yarn/releases/yarn-3.3.1.cjs
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+4. `pnp` 세팅
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```shell
+$ yarn
+```
 
-## Learn More
+5. `vscode` `plugin` 설치
 
-To learn more about Next.js, take a look at the following resources:
+```shell
+$ yarn dlx @yarnpkg/sdks vscode
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+6. `gitignore` zero install setting
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```shell
+# zero install
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+7. `.tsx` 파일에서 `path`를 못 찾을 때, `cmd+shift+p` 누른 후 `select typesript version` 선택 후 `use workspace version` 을 선택.
